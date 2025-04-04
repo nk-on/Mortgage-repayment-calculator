@@ -4,7 +4,7 @@ interface InputProps {
 }
 export default function Input({ title, symbol }: InputProps) {
   return (
-    <div className="lg:w-[45%]">
+    <div className="lg:w-[45%] w-[235px]">
       <h2 className="text-[#4E6E7E]">{title}</h2>
       <div className="flex border border-[#6B94A8] rounded-[5px]">
         <input type="text" className=" lg:w-[90%] h-[48px] rounded-tl-[5px] rounded-bl-[5px]" />
