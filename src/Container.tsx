@@ -1,4 +1,4 @@
-import FormContainer from "./FormContainer";
+import FormContainer from "./FormContainer/FormContainer";
 import ResultsContainer from "./ResultsContainer";
 
 export default function Container() {
