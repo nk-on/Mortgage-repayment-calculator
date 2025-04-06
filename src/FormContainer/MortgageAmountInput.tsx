@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { CalculatorContext } from "../CalculatorContext"
 export default function MortgageAmountInput(){
-    const {setMortgageAmount} = useContext(CalculatorContext)
+    const {setMortgageAmount} = useContext(CalculatorContext);
     return (
         <div className="w-[100%]">
           <h2 className="text-[#4E6E7E]">Mortgage Amount</h2> 

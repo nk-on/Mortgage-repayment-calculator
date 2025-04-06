@@ -1,24 +1,55 @@
-import { createContext, useState } from "react";
+import { createContext, useState,useReducer } from "react";
+import {calculateMonthlyPayment,calculateInterestOnly} from "./calculatePayment";
+type Action =
+  {type:string}
+
 interface CalculatorContextProps {
-    mortgageAmount: number | null;
-    setMortgageAmount: (value: number | null) => void;
-    interestAmount: number | null;
-    setInterestAmount: (value: number | null) => void;
-    yearsAmount: number | null;
-    setYearsAmount: (value: number | null) => void;
+    mortgageAmount: number;
+    setMortgageAmount: (value: number) => void;
+    interestAmount: number;
+    setInterestAmount: (value: number) => void;
+    yearsAmount: number;
+    setYearsAmount: (value: number) => void;
+    payment:{monthlyPayment:number};
+    dispatch:React.ActionDispatch<[action: Action]>;
+    setMortgageType:React.Dispatch<React.SetStateAction<string>>;
+    mortgageType:string
 }
 export const CalculatorContext = createContext<CalculatorContextProps>({
-    mortgageAmount:null,
+    mortgageAmount:0,
     setMortgageAmount:()=>{},
-    interestAmount:null,
+    interestAmount:0,
     setInterestAmount:()=>{},
-    yearsAmount:null ,
-    setYearsAmount:()=>{}
+    yearsAmount:0,
+    setYearsAmount:()=>{},
+    payment:{ monthlyPayment: 0},
+    dispatch:()=>{},
+    setMortgageType:()=>{},
+    mortgageType:''
 });
 export default function CalculatorProvider({children}){
-    const [mortgageAmount,setMortgageAmount]  = useState <number | null>(null);
-    const [interestAmount, setInterestAmount] = useState<number | null>(null);
-    const [yearsAmount,setYearsAmount] = useState<number | null>(null);
+    const [mortgageAmount,setMortgageAmount]  = useState <number>(0);
+    const [interestAmount, setInterestAmount] = useState<number>(0);
+    const [yearsAmount,setYearsAmount] = useState<number>(0);
+    const [mortgageType,setMortgageType] = useState<string>('');
+    const [payment, dispatch] = useReducer(CalculatePayment, { monthlyPayment: 0 });
+    function CalculatePayment(state, action) {
+        switch (action.type) {
+          case "Repayment":
+            return {
+              ...state,
+              monthlyPayment: calculateMonthlyPayment(
+                mortgageAmount,
+                interestAmount,
+                yearsAmount
+              ),
+            };
+          case "Interest only":
+            return {...state,mothlyPayment:calculateInterestOnly(mortgageAmount,interestAmount)}
+          default:
+            return state;
+        }
+    }
     return (
         <CalculatorContext.Provider value = {{
             mortgageAmount,
@@ -26,7 +57,11 @@ export default function CalculatorProvider({children}){
             interestAmount,
             setInterestAmount,
             yearsAmount,
-            setYearsAmount
+            setYearsAmount,
+            payment,
+            dispatch,
+            setMortgageType,
+            mortgageType
         }}>
          {children}
         </CalculatorContext.Provider>
