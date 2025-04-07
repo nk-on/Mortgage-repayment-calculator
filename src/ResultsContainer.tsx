@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CalculatorContext } from "./CalculatorContext";
 export default function ResultsContainer() {
-  const {payment} = useContext(CalculatorContext);
+  const {payment,yearsAmount} = useContext(CalculatorContext);
   return (
     <div className="lg:w-[50%] lg:h-[100%] min-h-[60%] w-[100%] bg-[#133041] lg:rounded-bl-[50px] lg:rounded-tr-[30px] p-[30px]">
       <div className="flex flex-col  gap-[20px]">
@@ -19,7 +19,7 @@ export default function ResultsContainer() {
          <div className="w-[90%] h-[1px] bg-[#9ABED540]"></div>
          <div>
             <p className="text-[#9ABED5]">Total you will repay</p>
-            <h1 className="text-[#fff] font-bold">£539,322.94</h1>
+            <h1 className="text-[#fff] font-bold">£{payment.monthlyPayment*yearsAmount*12}</h1>
          </div>
       </div>
     </div>

@@ -3,8 +3,9 @@ import Input from "./Input";
 import MortgageType from "./MortgageType";
 import { useContext,} from "react";
 import { CalculatorContext } from "../CalculatorContext";
+import mortgageTypes from "./MortgageTypes";
 export default function FormContainer() {
-  const { mortgageType,dispatch } = useContext(CalculatorContext);
+  const { mortgageType,dispatch} = useContext(CalculatorContext);
   return (
     <div className="flex flex-col lg:items-start items-center justify-between p-[30px] gap-[10px]  lg:h-[100%] h-[65%] bg-[#fff] text-[#4E6E7E] lg:rounded-tl-[50px] lg:rounded-bl-[50px] lg:p-[30px] ">
       <div className="w-[90%] lg:flex  justify-between items-center">
@@ -20,8 +21,9 @@ export default function FormContainer() {
         <div className="flex flex-col gap-[10px]">
           <h2>Motrgage type</h2>
           <div className="flex flex-col gap-[10px]">
-            <MortgageType title="Repayment" />
-            <MortgageType title="Interest only" />
+            {
+              mortgageTypes.map((element)=> <MortgageType key={element.id} title={element.title} id = {element.id} checked = {element.checked} />)
+            }
           </div>
         </div>
       </form>
