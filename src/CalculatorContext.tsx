@@ -37,7 +37,6 @@ export default function CalculatorProvider({children}){
         switch (action.type) {
           case "Repayment":
             return {
-              ...state,
               monthlyPayment: calculateMonthlyPayment(
                 mortgageAmount,
                 interestAmount,
@@ -45,7 +44,7 @@ export default function CalculatorProvider({children}){
               ),
             };
           case "Interest only":
-            return {...state,mothlyPayment:calculateInterestOnly(mortgageAmount,interestAmount)}
+            return {monthlyPayment:calculateInterestOnly(mortgageAmount,interestAmount)}
           default:
             return state;
         }

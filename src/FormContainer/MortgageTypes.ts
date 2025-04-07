@@ -5,7 +5,7 @@ const mortgageTypes = [
         id: 0
     },
     {
-        title: 'Interest only"',
+        title: 'Interest only',
         checked:false,
         id: 1
     }
