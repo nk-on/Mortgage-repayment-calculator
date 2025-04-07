@@ -4,6 +4,7 @@ import MortgageType from "./MortgageType";
 import { useContext,} from "react";
 import { CalculatorContext } from "../CalculatorContext";
 import mortgageTypes from "./MortgageTypes";
+import mortgageInputs from "./MortgageInputs";
 export default function FormContainer() {
   const { mortgageType,dispatch} = useContext(CalculatorContext);
   return (
@@ -15,8 +16,7 @@ export default function FormContainer() {
       <form className="flex flex-col gap-[30px] h-[78%] justify-start w-[80%]">
         <MortgageAmountInput />
         <div className="w-[100%] flex lg:flex-row flex-col gap-[50px]">
-          <Input title={"Mortgage term"} symbol={"years"} />
-          <Input title={"Intrest rate"} symbol={"%"} />
+          {mortgageInputs.map((element) => <Input title={element.title} symbol={element.symbol} />)}
         </div>
         <div className="flex flex-col gap-[10px]">
           <h2>Motrgage type</h2>
