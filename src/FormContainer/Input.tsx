@@ -3,9 +3,12 @@ import { CalculatorContext } from "../CalculatorContext";
 interface InputProps {
   title: string;
   symbol: string;
+  error:boolean
+  setError: React.Dispatch<React.SetStateAction<boolean>>
 }
-export default function Input({ title, symbol }: InputProps) {
-  const {setYearsAmount,setInterestAmount} = useContext(CalculatorContext)
+export default function Input({ title, symbol,error,setError }: InputProps) {
+  const {setYearsAmount,setInterestAmount} = useContext(CalculatorContext);
+  // const [errorColor,setErrorColor] = useState('bg-[#E4F4FD]');
   return (
     <div className="lg:w-[45%] w-[235px]">
       <h2 className="text-[#4E6E7E]">{title}</h2>
@@ -16,11 +19,13 @@ export default function Input({ title, symbol }: InputProps) {
           }else{
             setInterestAmount(Number(e.target.value))
           }
+          setError(false)
         }}/>
-        <div className="w-[64px] lg:h-[45px] p-[10px] flex justify-center items-center bg-[#E4F4FD] rounded-tr-[5px] rounded-br-[5px] font-bold text-[#4E6E7E]">
+        <div className={`w-[64px] lg:h-[45px] p-[10px] flex justify-center items-center ${error ? 'bg-[#D73328]' : 'bg-[#E4F4FD]'}  rounded-tr-[5px] rounded-br-[5px] font-bold text-[#4E6E7E]`}>
           {symbol}
         </div>
       </div>
+      {error && <div className="text-[#D73328]">This field is required</div>}
     </div>
   );
 }

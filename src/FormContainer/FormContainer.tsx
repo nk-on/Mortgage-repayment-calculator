@@ -4,7 +4,6 @@ import MortgageType from "./MortgageType";
 import { useContext, useState } from "react";
 import { CalculatorContext } from "../CalculatorContext";
 import mortgageTypes from "./MortgageTypes";
-import mortgageInputs from "./MortgageInputs";
 export default function FormContainer() {
   const {
     mortgageType,
@@ -14,8 +13,9 @@ export default function FormContainer() {
     yearsAmount,
   } = useContext(CalculatorContext);
   const [mortgageAmountError,setMortgageAmountError] = useState(false);
-  const [mortgageTermError,setMortgageTermError] = useState(false);
-  const [yearsAmoutnError,setYearsAmountError] = useState(false);
+  const [InterestAmountError,setInterestAmountError] = useState(false);
+  const [yearsAmountError,setYearsAmountError] = useState(false);
+  
   return (
     <div className="flex flex-col lg:items-start items-center justify-between p-[30px] gap-[10px]  lg:h-[100%] h-[65%] bg-[#fff] text-[#4E6E7E] lg:rounded-tl-[50px] lg:rounded-bl-[50px] lg:p-[30px] ">
       <div className="w-[90%] lg:flex  justify-between items-center">
@@ -25,9 +25,8 @@ export default function FormContainer() {
       <form className="flex flex-col gap-[30px] h-[78%] justify-start w-[80%]">
         <MortgageAmountInput error = {mortgageAmountError} setError = {setMortgageAmountError} />
         <div className="w-[100%] flex lg:flex-row flex-col gap-[50px]">
-          {mortgageInputs.map((element,index) => (
-            <Input key={index} title={element.title} symbol={element.symbol} />
-          ))}
+          <Input key={0} title={"Mortgage term"} symbol={"years"} error = {yearsAmountError} setError = {setYearsAmountError}   />
+          <Input key={1} title={"Intrest rate"} symbol={"%"} error = {InterestAmountError} setError = {setInterestAmountError} />
         </div>
         <div className="flex flex-col gap-[10px]">
           <h2>Motrgage type</h2>
@@ -46,8 +45,16 @@ export default function FormContainer() {
       <button
         className="bg-[#D8DB2F] flex justify-between items-center text-[#000] font-bold lg:h-[56px] h-[18px] p-[30px] rounded-[50px] w-[70%]"
         onClick={() => {
-          if(mortgageAmount === 0){
-            setMortgageAmountError(true);
+          if(mortgageAmount === 0 || yearsAmount === 0 || interestAmount === 0 || mortgageType === ""){
+            if(mortgageAmount === 0){
+              setMortgageAmountError(true);
+            }
+            if(yearsAmount === 0){
+              setYearsAmountError(true);
+            }
+            if(interestAmount === 0){
+              setInterestAmountError(true)
+            }
           }
           dispatch({ type: mortgageType });
         }}
