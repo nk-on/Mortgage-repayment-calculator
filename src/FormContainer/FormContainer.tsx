@@ -15,7 +15,7 @@ export default function FormContainer() {
   const [mortgageAmountError,setMortgageAmountError] = useState(false);
   const [InterestAmountError,setInterestAmountError] = useState(false);
   const [yearsAmountError,setYearsAmountError] = useState(false);
-  
+  const [mortgageTypeError,setMortgageTypeError] = useState(false);
   return (
     <div className="flex flex-col lg:items-start items-center justify-between p-[30px] gap-[10px]  lg:h-[100%] h-[65%] bg-[#fff] text-[#4E6E7E] lg:rounded-tl-[50px] lg:rounded-bl-[50px] lg:p-[30px] ">
       <div className="w-[90%] lg:flex  justify-between items-center">
@@ -37,8 +37,10 @@ export default function FormContainer() {
                 title={element.title}
                 id={element.id}
                 checked={element.checked}
+                setMortgageTypeError = {setMortgageTypeError}
               />
             ))}
+            {mortgageTypeError && <p className="text-[#D73328]">This field is required</p>}
           </div>
         </div>
       </form>
@@ -54,6 +56,9 @@ export default function FormContainer() {
             }
             if(interestAmount === 0){
               setInterestAmountError(true)
+            }
+            if(mortgageType === ""){
+              setMortgageTypeError(true);
             }
           }
           dispatch({ type: mortgageType });
