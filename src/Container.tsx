@@ -1,5 +1,5 @@
 import FormContainer from "./FormContainer/FormContainer";
-import ResultsContainer from "./ResultsContainer";
+import ResultsContainer from "./ResultsContainer/ResultsContainer";
 
 export default function Container() {
   return <>
