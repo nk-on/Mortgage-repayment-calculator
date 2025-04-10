@@ -15,7 +15,7 @@ export default function MortgageAmountInput({error,setError}:MortgageAmountInput
         </div>
         <input
           type="number"
-          className="w-[90%]  rounded-tr-[5px] rounded-br-[5px] outline-none"
+          className="w-[90%]  rounded-tr-[5px] rounded-br-[5px] outline-none px-[10px] font-bold text-[#000]"
           onChange={(e) => {
             setMortgageAmount(Number(e.target.value));
             setError(false)
