@@ -10,7 +10,7 @@ interface MortgageType {
 export default function MortgageType({ title, id, checked,setMortgageTypeError }: MortgageType) {
   const { setMortgageType} = useContext(CalculatorContext);
   return (
-    <div className="w-[100%] lg:h-[48px] h-[24px] border border-[#6B94A8] flex items-center gap-[30px] p-[10px] rounded-[5px] hover:bg-[#D8DB2F26]">
+    <div className="cursor-pointer w-[100%] lg:h-[48px] h-[24px] border border-[#6B94A8] flex items-center gap-[30px] p-[10px] rounded-[5px] hover:bg-[#D8DB2F26]">
       <div
         className={`border border-[#4E6E7E] w-[24px] h-[24px] rounded-[50%] flex justify-center items-center ${
           checked && "border-[#D8DB2F]"
