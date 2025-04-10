@@ -13,7 +13,7 @@ export default function Input({ title, symbol,error,setError }: InputProps) {
     <div className="lg:w-[45%] w-[235px]">
       <h2 className="text-[#4E6E7E]">{title}</h2>
       <div className="flex border border-[#6B94A8] rounded-[5px] lg:h-[48px] h-[24px]">
-        <input type="number" className=" lg:w-[90%]  rounded-tl-[5px] rounded-bl-[5px]" onChange={(e)=>{
+        <input type="number" className=" lg:w-[90%]  rounded-tl-[5px] rounded-bl-[5px] outline-none" onChange={(e)=>{
           if(title === "Mortgage term"){
             setYearsAmount(Number(e.target.value));
           }else{
