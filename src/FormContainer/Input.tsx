@@ -5,8 +5,9 @@ interface InputProps {
   symbol: string;
   error: boolean;
   setError: React.Dispatch<React.SetStateAction<boolean>>;
+  data:number
 }
-export default function Input({ title, symbol, error, setError }: InputProps) {
+export default function Input({ title, symbol, error, setError,data }: InputProps) {
   const { setYearsAmount, setInterestAmount } = useContext(CalculatorContext);
   return (
     <div className="lg:w-[45%] w-[235px] group">
@@ -14,6 +15,7 @@ export default function Input({ title, symbol, error, setError }: InputProps) {
       <div className="flex border border-[#6B94A8] rounded-[5px] lg:h-[48px] h-[24px]">
         <input
           type="number"
+          value={data === 0 ? '' : data}
           className=" cursor cursor-pointer lg:w-[90%]  rounded-tl-[5px] rounded-bl-[5px] outline-none px-[10px] text-[#000] font-bold border  group-hover:border-[rgb(216,219,47)]"
           onChange={(e) => {
             if (title === "Mortgage term") {

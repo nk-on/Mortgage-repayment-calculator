@@ -9,6 +9,5 @@ export function calculateMonthlyPayment(mortgageAmount: number, annualInterestRa
     return Number(monthlyPayment.toFixed(2));
 }
 export function calculateInterestOnly(mortgageAmount: number, interestAmount: number) {
-    console.log(mortgageAmount,interestAmount)
     return Number((mortgageAmount * (interestAmount / 12)).toFixed(2));
 }

@@ -5,7 +5,7 @@ interface MortgageAmountInputProps {
   setError: React.Dispatch<React.SetStateAction<boolean>>
 }
 export default function MortgageAmountInput({error,setError}:MortgageAmountInputProps) {
-  const { setMortgageAmount } = useContext(CalculatorContext);
+  const { setMortgageAmount,mortgageAmount } = useContext(CalculatorContext);
   return (
     <div className="w-[100%] group">
       <h2 className="text-[#4E6E7E]">Mortgage Amount</h2>
@@ -16,6 +16,7 @@ export default function MortgageAmountInput({error,setError}:MortgageAmountInput
         <input
           type="number"
           className="w-[90%]  rounded-tr-[5px] rounded-br-[5px] outline-none px-[10px] font-bold text-[#000] cursor-pointer border group-hover:border-[rgb(216,219,47)]"
+          value={mortgageAmount === 0 ? '' : mortgageAmount}
           onChange={(e) => {
             setMortgageAmount(Number(e.target.value));
             setError(false)

@@ -5,7 +5,7 @@ type Action =
 
 interface CalculatorContextProps {
     mortgageAmount: number;
-    setMortgageAmount: (value: number) => void;
+    setMortgageAmount: (value: number ) => void;
     interestAmount: number;
     setInterestAmount: (value: number) => void;
     yearsAmount: number;
@@ -28,7 +28,7 @@ export const CalculatorContext = createContext<CalculatorContextProps>({
     mortgageType:''
 });
 export default function CalculatorProvider({children}){
-    const [mortgageAmount,setMortgageAmount]  = useState <number>(0);
+    const [mortgageAmount,setMortgageAmount]  = useState<number>(0);
     const [interestAmount, setInterestAmount] = useState<number>(0);
     const [yearsAmount,setYearsAmount] = useState<number>(0);
     const [mortgageType,setMortgageType] = useState<string>('');
@@ -46,7 +46,7 @@ export default function CalculatorProvider({children}){
           case "Interest only":
             return {monthlyPayment:calculateInterestOnly(mortgageAmount,interestAmount)}
           default:
-            return state;
+            return {monthlyPayment:0}
         }
     }
     return (
