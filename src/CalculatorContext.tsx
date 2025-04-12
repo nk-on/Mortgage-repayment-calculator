@@ -1,7 +1,9 @@
 import { createContext, useState,useReducer } from "react";
-import {calculateMonthlyPayment,calculateInterestOnly} from "./calculatePayment";
+import {CalculatePayment} from "./calculatePayment";
 type Action =
-  {type:string}
+  {type:string,payload:{mortgageAmount: number;
+    interestAmount: number; 
+    yearsAmount: number}}
 
 interface CalculatorContextProps {
     mortgageAmount: number;
@@ -34,22 +36,7 @@ export default function CalculatorProvider({children}:{children:React.ReactNode}
     const [mortgageType,setMortgageType] = useState<string>('');
     const [payment, dispatch] = useReducer(CalculatePayment, { monthlyPayment: 0 });
 
-    function CalculatePayment(state:{monthlyPayment:number}, action:{type:string}) {
-        switch (action.type) {
-          case "Repayment":
-            return {
-              monthlyPayment: calculateMonthlyPayment(
-                mortgageAmount,
-                interestAmount,
-                yearsAmount
-              ),
-            };
-          case "Interest only":
-            return {monthlyPayment:calculateInterestOnly(mortgageAmount,interestAmount)}
-          default:
-            return {monthlyPayment:0}
-        }
-    }
+   
     return (
         <CalculatorContext.Provider value = {{
             mortgageAmount,

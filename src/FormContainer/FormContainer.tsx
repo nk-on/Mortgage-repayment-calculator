@@ -34,7 +34,7 @@ export default function FormContainer() {
                 return (element.checked = false);
               });
             }
-            dispatch({ type: "" });
+            dispatch({ type: "",payload:{mortgageAmount,interestAmount,yearsAmount}});
           }}
         >
           Clear All
@@ -103,7 +103,7 @@ export default function FormContainer() {
               setMortgageTypeError(true);
             }
           }
-          dispatch({ type: mortgageType });
+          dispatch({ type: mortgageType,payload:{mortgageAmount,interestAmount,yearsAmount} });
         }}
       >
         <div className="flex justify-center items-center gap-[20px]">
