@@ -26,7 +26,7 @@ export default function MortgageType({ title, id, checked,setMortgageTypeError }
           setMortgageTypeError(false)
         }}
       >
-        {checked && <div className="bg-[#D8DB2F] w-[14px] h-[14px] rounded-[50%]"></div>}
+        {checked && <div className="bg-[#D8DB2F] p-[5px] rounded-[50%]"></div>}
       </div>
       <h1 className="text-[#133041] font-bold">{title}</h1>
     </div>
