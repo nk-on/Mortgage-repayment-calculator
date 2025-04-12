@@ -27,13 +27,14 @@ export const CalculatorContext = createContext<CalculatorContextProps>({
     setMortgageType:()=>{},
     mortgageType:''
 });
-export default function CalculatorProvider({children}){
+export default function CalculatorProvider({children}:{children:React.ReactNode}){
     const [mortgageAmount,setMortgageAmount]  = useState<number>(0);
     const [interestAmount, setInterestAmount] = useState<number>(0);
     const [yearsAmount,setYearsAmount] = useState<number>(0);
     const [mortgageType,setMortgageType] = useState<string>('');
     const [payment, dispatch] = useReducer(CalculatePayment, { monthlyPayment: 0 });
-    function CalculatePayment(state, action) {
+
+    function CalculatePayment(state:{monthlyPayment:number}, action:{type:string}) {
         switch (action.type) {
           case "Repayment":
             return {

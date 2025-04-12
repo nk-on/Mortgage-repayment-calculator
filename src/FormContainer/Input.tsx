@@ -10,13 +10,13 @@ interface InputProps {
 export default function Input({ title, symbol, error, setError,data }: InputProps) {
   const { setYearsAmount, setInterestAmount } = useContext(CalculatorContext);
   return (
-    <div className="lg:w-[45%] w-[235px] group">
+    <div className="lg:w-[45%]  w-[235px] group">
       <h2 className="text-[#4E6E7E]">{title}</h2>
-      <div className="flex border border-[#6B94A8] rounded-[5px] lg:h-[48px] h-[24px]">
+      <div className="flex border border-[#6B94A8] w-[115%] h-[48px] rounded-[5px] lg:h-[48px]">
         <input
           type="number"
           value={data === 0 ? '' : data}
-          className=" cursor cursor-pointer lg:w-[90%]  rounded-tl-[5px] rounded-bl-[5px] outline-none px-[10px] text-[#000] font-bold border  group-hover:border-[rgb(216,219,47)]"
+          className=" cursor cursor-pointer lg:w-[90%] h-[100%] rounded-tl-[5px] rounded-bl-[5px] outline-none px-[10px] text-[#000] font-bold border  group-hover:border-[rgb(216,219,47)]"
           onChange={(e) => {
             if (title === "Mortgage term") {
               setYearsAmount(Number(e.target.value));
