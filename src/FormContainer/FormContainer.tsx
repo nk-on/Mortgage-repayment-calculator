@@ -108,7 +108,7 @@ export default function FormContainer() {
       >
         <div className="flex justify-center items-center gap-[20px]">
           <span>
-            <img src="src/assets/icon-calculator.svg" />
+            <img src="assets/icon-calculator.svg" />
           </span>
           <p>Calculate Repayments</p>
         </div>
