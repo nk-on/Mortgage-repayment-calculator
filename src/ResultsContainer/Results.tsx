@@ -25,7 +25,7 @@ export default function Results() {
         <div>
           <p className="text-[#9ABED5]">Total you will repay</p>
           <h1 className="text-[#fff] font-bold">
-            £{payment.monthlyPayment * yearsAmount * 12}
+            £{(payment.monthlyPayment * yearsAmount * 12).toFixed(2)}
           </h1>
         </div>
       </div>
